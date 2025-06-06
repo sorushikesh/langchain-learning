@@ -8,3 +8,8 @@ class Templates:
         "1. A short summary"
         "2. Some interesting facts about them"
     )
+
+    summarise_content = (
+        "Summarize the following Wikipedia content in a clear and concise manner for a general audience:\n\n"
+        "{content}"
+    )
