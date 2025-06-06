@@ -5,8 +5,8 @@ Main class for playground
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import AzureChatOpenAI
 
-from app_langchain_basics.constants.config import ModelDetails
-from app_langchain_basics.constants.templates import Templates
+from app.constants.config import ModelDetails
+from app.constants.templates import Templates
 
 information = """
 Cristiano Ronaldo dos Santos Aveiro (Portuguese pronunciation: [kɾiʃˈtjɐnu ʁɔˈnaldu] ⓘ; born 5 February 1985) is a Portuguese professional footballer who plays as a forward for and captains both Saudi Pro League club Al-Nassr and the Portugal national team. Nicknamed CR7, he is widely regarded as one of the greatest players of all time, and has won numerous individual accolades throughout his professional footballing career, including five Ballon d'Or awards, a record three UEFA Men's Player of the Year Awards, four European Golden Shoes, and was named five times the world's best player by FIFA.[note 3] He has won 33 trophies in his career, including seven league titles, five UEFA Champions Leagues and the UEFA European Championship. Ronaldo holds the records for most goals (140) and assists (42) in the Champions League, goals (14) and assists (8) in the European Championship, and most international appearances (220) and international goals (137). He is one of the few players to have made over 1,200 professional career appearances, the most by an outfield player, and has scored over 900 official senior career goals for club and country, making him the top goalscorer of all time.[note 4]
