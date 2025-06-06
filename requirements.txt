@@ -5,6 +5,9 @@ langchain-openai
 langchain-community
 langchainhub
 
+# wikipedia
+wikipedia
+
 # Development tools
 black
 
