@@ -11,3 +11,9 @@ class ModelDetails:
     AZURE_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
     AZURE_DEPLOYMENT_NAME = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME")
     AZURE_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
+
+class Settings:
+    """
+    Variables
+    """
+    WIKI_LANG = os.getenv("WIKI_LANG")
