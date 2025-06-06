@@ -1,7 +1,12 @@
+# Core LangChain packages
 langchain
+langchain-core
 langchain-openai
 langchain-community
 langchainhub
 
+# Development tools
 black
-dotenv
+
+# Environment management
+python-dotenv
