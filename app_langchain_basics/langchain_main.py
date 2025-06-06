@@ -18,7 +18,6 @@ One of the world's most marketable and famous athletes, Ronaldo was ranked the w
 if __name__ == "__main__":
 
     variable = "information"
-    information = "Cristiano Ronaldo"
 
     summary_prompt_template = PromptTemplate(
         input_variables=[variable],
@@ -34,6 +33,5 @@ if __name__ == "__main__":
     )
 
     chain = summary_prompt_template | llm
-    response = chain.invoke(input={variable: information})
-
+    response = chain.invoke({variable: information})
     print(response.content)
