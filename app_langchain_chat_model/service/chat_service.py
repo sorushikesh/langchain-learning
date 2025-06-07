@@ -2,6 +2,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_openai import AzureChatOpenAI
 
 from app.constants.config import ModelDetails
+from app.constants.templates import Templates
 
 llm = AzureChatOpenAI(
     azure_endpoint=ModelDetails.AZURE_ENDPOINT,
@@ -11,14 +12,10 @@ llm = AzureChatOpenAI(
     temperature=1
 )
 
-system_message_template = ("You are a knowledgeable and helpful assistant specializing in providing accurate, "
-                           "up-to-date responses about sports events, teams, athletes, and historical sports facts. "
-                           "Ensure your answers are clear, engaging, and relevant to the user's query.")
-
 
 def chat_with_model(user_message: str) -> str:
     message = [
-        SystemMessage(content=system_message_template),
+        SystemMessage(content=Templates.system_message_chat_model),
         HumanMessage(content=user_message)
     ]
 
