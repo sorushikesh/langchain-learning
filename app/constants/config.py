@@ -12,6 +12,14 @@ class ModelDetails:
     AZURE_DEPLOYMENT_NAME = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME")
     AZURE_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
 
+    """
+    Configuration for anthropic claude sonnet 4
+    """
+    MAX_TOKENS = int(os.getenv("MAX_TOKENS", 1024))
+    TEMPERATURE = float(os.getenv("TEMPERATURE", 0.5))
+    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+    ANTHROPIC_MODEL_ID = os.getenv("ANTHROPIC_MODEL_ID")
+
 class Settings:
     """
     Variables
