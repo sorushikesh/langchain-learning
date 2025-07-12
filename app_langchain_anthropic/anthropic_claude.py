@@ -1,6 +1,6 @@
 import logging
 from anthropic import Anthropic
-from anthropic.types import MessageParam
+from anthropic.types import MessageParam, ContentBlockDeltaEvent
 
 from app.constants.config import ModelDetails
 from app.constants.templates import prompt_loader
@@ -40,3 +40,32 @@ def call_claude(prompt: str) -> str:
     except Exception as e:
         logger.exception("Error while calling Claude model: %s", e)
         raise
+
+
+def stream_claude_response(prompt: str):
+    logger.info("Starting Claude stream response")
+
+    messages: list[MessageParam] = [
+        {
+            "role": "user",
+            "content": prompt,
+        }
+    ]
+
+    try:
+        stream = client.messages.create(
+            model=ModelDetails.ANTHROPIC_MODEL_ID,
+            max_tokens=ModelDetails.MAX_TOKENS,
+            temperature=ModelDetails.TEMPERATURE,
+            system=prompt_loader.get_system_prompt(),
+            messages=messages,
+            stream=True,
+        )
+
+        for event in stream:
+            if isinstance(event, ContentBlockDeltaEvent):
+                yield event.delta.text
+
+    except Exception as e:
+        logger.exception("Streaming Claude call failed: %s", e)
+        yield "[ERROR] Claude failed to stream response."

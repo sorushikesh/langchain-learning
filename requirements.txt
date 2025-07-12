@@ -1,11 +1,11 @@
-# Core LangChain packages
+# LangChain packages
 langchain-anthropic==0.3.17
 anthropic==0.57.1
 langchain-core==0.3.68
 langchain-community==0.3.27
 langchain==0.3.26
-langchain-openai~=0.3.19
-langchainhub
+langchain-openai==0.3.19
+langchainhub==0.1.21
 
 # FastAPI and Web Server
 fastapi==0.116.1
@@ -17,7 +17,9 @@ python-dotenv==1.1.1
 pydantic==2.11.7
 
 # wikipedia
-wikipedia~=1.4.0
+wikipedia==1.4.0
 
 # Development tools
-black
+black==25.1.0
+dotenv==0.9.9
+starlette==0.46.2
