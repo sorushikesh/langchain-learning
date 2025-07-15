@@ -4,7 +4,7 @@ anthropic==0.57.1
 langchain-core==0.3.68
 langchain-community==0.3.27
 langchain==0.3.26
-langchain-openai==0.3.27
+langchain-openai==0.3.28
 langchainhub==0.1.21
 
 # FastAPI and Web Server
