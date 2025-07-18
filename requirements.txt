@@ -7,7 +7,7 @@ langchain==0.3.26
 langchain-openai==0.3.28
 langchainhub==0.1.21
 langchain-mongodb==0.6.2
-langsmith==0.4.6
+langsmith==0.4.7
 langgraph==0.5.3
 langchain-huggingface==0.3.0
 sentence-transformers==5.0.0
