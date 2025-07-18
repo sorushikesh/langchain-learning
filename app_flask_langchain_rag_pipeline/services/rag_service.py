@@ -1,15 +1,17 @@
+from langchain.chains import RetrievalQA
+from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
+from langchain_anthropic import ChatAnthropic
+from langchain_core.documents import Document
 from langchain_core.prompts import PromptTemplate
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_mongodb import MongoDBAtlasVectorSearch
-from langchain_anthropic import ChatAnthropic
-from langchain.chains import RetrievalQA
-from langchain_core.documents import Document
 
 from app.constants.config import ModelDetails
+from app_flask_langchain_rag_pipeline.config import Config
 from app_flask_langchain_rag_pipeline.constants.templates import PromptTemplates
 from app_flask_langchain_rag_pipeline.extensions import mongo
 from app_flask_langchain_rag_pipeline.logger_config import setup_logger
-from app_flask_langchain_rag_pipeline.config import Config
 
 logger = setup_logger()
 
@@ -19,6 +21,12 @@ _vector_store = None
 PROMPT = PromptTemplate(
     template=PromptTemplates.SYSTEM_PROMPT,
     input_variables=["context", "question"]
+)
+
+memory = ConversationBufferMemory(
+    memory_key="chat_history",
+    return_messages=True,
+    output_key="answer"
 )
 
 
@@ -65,9 +73,10 @@ def store_transaction_embedding(transaction: dict):
 
 def query_rag(question: str) -> str:
     """Query the vector store and generate an answer using a language model."""
-    logger.debug("Running RAG pipeline for question: %s", question)
-    result = build_qa_chain().invoke({"query": question})
-    return result.get("result", "")
+    logger.debug("Running conversational RAG for question: %s", question)
+    result = build_qa_chain().invoke({"question": question})
+    return result.get("answer", "")
+
 
 def build_qa_chain():
     retriever = _get_vector_store().as_retriever(
@@ -84,10 +93,10 @@ def build_qa_chain():
         stop=None
     )
 
-    return RetrievalQA.from_chain_type(
+    return ConversationalRetrievalChain.from_llm(
         llm=llm,
         retriever=retriever,
-        chain_type="stuff",
-        chain_type_kwargs={"prompt": PROMPT},
+        memory=memory,
+        combine_docs_chain_kwargs={"prompt": PROMPT},
         return_source_documents=True
     )
