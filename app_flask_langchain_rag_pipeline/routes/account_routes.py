@@ -13,4 +13,4 @@ def add_account():
     except ValidationError as e:
         return jsonify({"error": e.errors()}), 400
 
-    return create_account(account.dict())
+    return create_account(account.__dict__)

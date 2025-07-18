@@ -12,4 +12,4 @@ def add_transaction():
     except ValidationError as e:
         return jsonify({"error": e.errors()}), 400
 
-    return process_transaction(txn.dict())
+    return process_transaction(txn.__dict__)

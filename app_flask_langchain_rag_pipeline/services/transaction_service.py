@@ -1,7 +1,11 @@
 from app_flask_langchain_rag_pipeline.extensions import mongo
 from app_flask_langchain_rag_pipeline.logger_config import setup_logger
+from app_flask_langchain_rag_pipeline.services.rag_service import (
+    store_transaction_embedding,
+)
 
 logger = setup_logger()
+
 
 def process_transaction(transaction_data: dict):
     account_number = transaction_data["account_number"]
@@ -18,7 +22,9 @@ def process_transaction(transaction_data: dict):
 
     if txn_type == "debit":
         if amount > current_balance:
-            logger.warning(f"Insufficient funds for account {account_number}. Requested: {amount}, Available: {current_balance}")
+            logger.warning(
+                f"Insufficient funds for account {account_number}. Requested: {amount}, Available: {current_balance}"
+            )
             return {"error": "Insufficient balance"}, 400
         new_balance = current_balance - amount
     elif txn_type == "credit":
@@ -28,10 +34,12 @@ def process_transaction(transaction_data: dict):
         return {"error": "Invalid transaction type"}, 400
 
     mongo.db.account.update_one(
-        {"account_number": account_number},
-        {"$set": {"current_balance": new_balance}}
+        {"account_number": account_number}, {"$set": {"current_balance": new_balance}}
     )
     mongo.db.transaction.insert_one(transaction_data)
+    store_transaction_embedding(transaction_data)
 
-    logger.info(f"Transaction processed for account {account_number}. New balance: {new_balance}")
+    logger.info(
+        f"Transaction processed for account {account_number}. New balance: {new_balance}"
+    )
     return {"message": "Transaction successful", "new_balance": new_balance}, 200
