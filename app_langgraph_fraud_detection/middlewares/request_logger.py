@@ -1,6 +1,6 @@
 from flask import request
 
-from app_flask_langchain_rag_pipeline.logger_config import setup_logger
+from app_langgraph_fraud_detection.logger_config import setup_logger
 
 logger = setup_logger()
 
