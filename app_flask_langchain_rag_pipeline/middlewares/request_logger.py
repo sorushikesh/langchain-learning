@@ -16,7 +16,8 @@ def log_request_middleware(app):
 
         def sanitize(value):
             if isinstance(value, str):
-                return value.replace('\r', '').replace('\n', '')
+                sanitized_value = value.replace('\r', '').replace('\n', '').replace('\t', '')
+                return sanitized_value[:1000]  # Truncate to 1000 characters
             elif isinstance(value, dict):
                 return {k: sanitize(v) for k, v in value.items()}
             elif isinstance(value, list):
