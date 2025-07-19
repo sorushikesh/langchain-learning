@@ -27,10 +27,11 @@ def log_request_middleware(app):
         sanitized_path = sanitize(request.path)
         sanitized_query = sanitize(request.args.to_dict())
         sanitized_body = sanitize(body_data)
+        sanitized_ip = sanitize(request.remote_addr)
 
         logger.info(
             f"Incoming Request: {sanitized_method} {sanitized_path} | "
-            f"IP: {request.remote_addr} | "
+            f"IP: {sanitized_ip} | "
             f"Query: {sanitized_query} | "
             f"Body: {sanitized_body}"
         )
