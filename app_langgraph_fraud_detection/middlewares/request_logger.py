@@ -11,8 +11,8 @@ def log_request_middleware(app):
         body_data = {}
         try:
             body_data = request.get_json() if request.is_json else {}
-        except Exception:
-            pass
+        except Exception as e:
+            logger.error(f"Failed to parse request body: {e}")
 
         logger.info(
             f"Incoming Request: {request.method} {request.path} | "
