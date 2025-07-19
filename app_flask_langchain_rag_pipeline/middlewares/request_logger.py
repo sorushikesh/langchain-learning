@@ -14,9 +14,23 @@ def log_request_middleware(app):
         except Exception as e:
             logger.warning(f"Failed to parse JSON from request body: {e}")
 
+        def sanitize(value):
+            if isinstance(value, str):
+                return value.replace('\r', '').replace('\n', '')
+            elif isinstance(value, dict):
+                return {k: sanitize(v) for k, v in value.items()}
+            elif isinstance(value, list):
+                return [sanitize(v) for v in value]
+            return value
+
+        sanitized_method = sanitize(request.method)
+        sanitized_path = sanitize(request.path)
+        sanitized_query = sanitize(request.args.to_dict())
+        sanitized_body = sanitize(body_data)
+
         logger.info(
-            f"Incoming Request: {request.method} {request.path} | "
+            f"Incoming Request: {sanitized_method} {sanitized_path} | "
             f"IP: {request.remote_addr} | "
-            f"Query: {request.args.to_dict()} | "
-            f"Body: {body_data}"
+            f"Query: {sanitized_query} | "
+            f"Body: {sanitized_body}"
         )
