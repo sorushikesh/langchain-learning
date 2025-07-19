@@ -16,7 +16,6 @@ One of the world's most marketable and famous athletes, Ronaldo was ranked the w
 """
 
 if __name__ == "__main__":
-
     variable = "information"
 
     summary_prompt_template = PromptTemplate(

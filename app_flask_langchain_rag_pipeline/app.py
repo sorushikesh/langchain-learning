@@ -3,13 +3,14 @@ from flask_cors import CORS
 
 from app_flask_langchain_rag_pipeline.config import Config
 from app_flask_langchain_rag_pipeline.extensions import mongo
-from app_flask_langchain_rag_pipeline.routes.account_routes import account_bp
-from app_flask_langchain_rag_pipeline.routes.chat_routes import chat_bp
-from app_flask_langchain_rag_pipeline.routes.transaction_routes import transaction_bp
 from app_flask_langchain_rag_pipeline.logger_config import setup_logger
 from app_flask_langchain_rag_pipeline.middlewares.request_logger import (
     log_request_middleware,
 )
+from app_flask_langchain_rag_pipeline.routes.account_routes import account_bp
+from app_flask_langchain_rag_pipeline.routes.chat_routes import chat_bp
+from app_flask_langchain_rag_pipeline.routes.transaction_routes import transaction_bp
+
 logger = setup_logger()
 
 

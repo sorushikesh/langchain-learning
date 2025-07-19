@@ -6,6 +6,7 @@ from app_flask_langchain_rag_pipeline.services.account_service import create_acc
 
 account_bp = Blueprint("account", __name__)
 
+
 @account_bp.route("/accounts", methods=["POST"])
 def add_account():
     try:

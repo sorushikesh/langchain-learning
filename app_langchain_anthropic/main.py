@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app_langchain_anthropic.routes import router
 
 app = FastAPI(title="RAG Chatbot", version="1.0.0")

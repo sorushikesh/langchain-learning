@@ -1,5 +1,6 @@
 import logging
 
+
 def setup_logger():
     logger = logging.getLogger("invoice_app")
     logger.setLevel(logging.DEBUG)
