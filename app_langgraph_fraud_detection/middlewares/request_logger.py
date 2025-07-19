@@ -19,9 +19,13 @@ def log_request_middleware(app):
         # Sanitize query parameters to remove newline characters
         sanitized_query = {k: str(v).replace('\r\n', '').replace('\n', '') for k, v in request.args.to_dict().items()}
 
+        sanitized_method = str(request.method).replace('\r\n', '').replace('\n', '')
+        sanitized_path = str(request.path).replace('\r\n', '').replace('\n', '')
+        sanitized_ip = str(request.remote_addr).replace('\r\n', '').replace('\n', '')
+        
         logger.info(
-            f"Incoming Request: {request.method} {request.path} | "
-            f"IP: {request.remote_addr} | "
+            f"Incoming Request: {sanitized_method} {sanitized_path} | "
+            f"IP: {sanitized_ip} | "
             f"Query: {sanitized_query} | "
             f"Body: {body_data}"
         )
