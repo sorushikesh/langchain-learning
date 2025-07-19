@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from datetime import datetime
+
+from pydantic import BaseModel
+
 
 class TransactionDTO(BaseModel):
     account_number: str

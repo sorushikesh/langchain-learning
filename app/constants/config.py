@@ -1,7 +1,9 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 class ModelDetails:
     """
@@ -19,6 +21,7 @@ class ModelDetails:
     TEMPERATURE = float(os.getenv("TEMPERATURE", 0.5))
     ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
     ANTHROPIC_MODEL_ID = os.getenv("ANTHROPIC_MODEL_ID")
+
 
 class Settings:
     """

@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+
 from app_flask_langchain_rag_pipeline.services.rag_service import query_rag
 
 chat_bp = Blueprint("chat", __name__)

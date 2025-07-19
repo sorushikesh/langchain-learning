@@ -1,7 +1,9 @@
 from flask import request
+
 from app_flask_langchain_rag_pipeline.logger_config import setup_logger
 
 logger = setup_logger()
+
 
 def log_request_middleware(app):
     @app.before_request
