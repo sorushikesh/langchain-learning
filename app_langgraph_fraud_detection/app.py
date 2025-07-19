@@ -23,6 +23,9 @@ def create_app():
 
 app = create_app()
 
+import os
+
 if __name__ == "__main__":
     logger.info("Starting Fraud detection flask application...")
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    is_debug = os.getenv("FLASK_ENV") == "development"
+    app.run(host="0.0.0.0", port=8080, debug=is_debug)
