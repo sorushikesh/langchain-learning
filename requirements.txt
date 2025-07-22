@@ -36,4 +36,4 @@ duckduckgo-search==8.1.1
 # Development tools
 black==25.1.0
 dotenv==0.9.9
-starlette==0.47.1
+starlette==0.47.2
