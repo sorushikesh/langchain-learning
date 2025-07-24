@@ -1,4 +1,3 @@
-from langchain.chains import RetrievalQA
 from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain_anthropic import ChatAnthropic
@@ -73,8 +72,9 @@ def store_transaction_embedding(transaction: dict):
 
 def query_rag(question: str) -> str:
     """Query the vector store and generate an answer using a language model."""
-    logger.debug("Running conversational RAG for question: %s", question)
-    result = build_qa_chain().invoke({"question": question})
+    sanitized_question = question.replace('\r\n', '').replace('\n', '')
+    logger.debug("Running conversational RAG for question: %s", sanitized_question)
+    result = build_qa_chain().invoke({"question": sanitized_question})
     return result.get("answer", "")
 
 

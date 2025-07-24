@@ -32,6 +32,9 @@ def create_app():
 
 app = create_app()
 
+import os
+
 if __name__ == "__main__":
     logger.info("Starting Flask Invoice Management API...")
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    is_debug = os.getenv("APP_ENV", "production") == "development"
+    app.run(host="0.0.0.0", port=8080, debug=is_debug)
