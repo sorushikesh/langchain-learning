@@ -11,7 +11,7 @@ langsmith==0.4.8
 langgraph==0.5.3
 langchain-huggingface==0.3.1
 sentence-transformers==5.0.0
-huggingface-hub==0.33.4
+huggingface-hub==0.34.1
 
 # FastAPI and Web Server
 fastapi==0.116.1
