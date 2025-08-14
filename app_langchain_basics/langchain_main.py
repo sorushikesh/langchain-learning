@@ -2,10 +2,10 @@
 Main class for playground
 """
 
+from app.util.config import ModelDetails
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import AzureChatOpenAI
 
-from app.constants.config import ModelDetails
 from app.constants.templates import Templates
 
 information = """

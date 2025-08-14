@@ -1,3 +1,4 @@
+from app.util.config import ModelDetails
 from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain_anthropic import ChatAnthropic
@@ -6,7 +7,6 @@ from langchain_core.prompts import PromptTemplate
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_mongodb import MongoDBAtlasVectorSearch
 
-from app.constants.config import ModelDetails
 from app_flask_langchain_rag_pipeline.config import Config
 from app_flask_langchain_rag_pipeline.constants.templates import PromptTemplates
 from app_flask_langchain_rag_pipeline.extensions import mongo

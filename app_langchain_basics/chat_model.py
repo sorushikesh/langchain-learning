@@ -1,6 +1,5 @@
+from app.util.config import ModelDetails
 from langchain_openai import AzureChatOpenAI
-
-from app.constants.config import ModelDetails
 
 llm = AzureChatOpenAI(
     azure_endpoint=ModelDetails.AZURE_ENDPOINT,

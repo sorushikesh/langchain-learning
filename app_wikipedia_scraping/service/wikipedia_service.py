@@ -1,10 +1,10 @@
 import logging
 
 import wikipedia
+from app.util.config import Settings, ModelDetails
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import AzureChatOpenAI
 
-from app.constants.config import Settings, ModelDetails
 from app.constants.templates import Templates
 
 logger = logging.getLogger(__name__)
