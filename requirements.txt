@@ -15,7 +15,7 @@ huggingface-hub==0.33.4
 
 # FastAPI and Web Server
 fastapi==0.116.1
-sse-starlette==2.4.1
+sse-starlette==3.0.2
 uvicorn==0.35.0
 
 # Flask
