@@ -2,8 +2,8 @@ import logging
 
 from anthropic import Anthropic
 from anthropic.types import MessageParam, ContentBlockDeltaEvent
+from app.util.config import ModelDetails
 
-from app.constants.config import ModelDetails
 from app.constants.templates import prompt_loader
 
 logging.basicConfig(level=logging.INFO)

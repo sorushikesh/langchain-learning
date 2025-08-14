@@ -1,7 +1,6 @@
+from app.util.config import ModelDetails
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_openai import AzureChatOpenAI
-
-from app.constants.config import ModelDetails
 
 messages = [
     SystemMessage("You are an expert in geo-politics"),

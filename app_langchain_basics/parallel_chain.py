@@ -1,9 +1,8 @@
+from app.util.config import ModelDetails
 from langchain.chains.llm import LLMChain
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableParallel
 from langchain_openai import AzureChatOpenAI
-
-from app.constants.config import ModelDetails
 
 llm = AzureChatOpenAI(
     azure_endpoint=ModelDetails.AZURE_ENDPOINT,

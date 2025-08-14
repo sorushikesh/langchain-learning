@@ -1,7 +1,7 @@
+from app.util.config import ModelDetails
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_openai import AzureChatOpenAI
 
-from app.constants.config import ModelDetails
 from app.constants.templates import Templates
 
 llm = AzureChatOpenAI(
