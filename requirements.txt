@@ -1,7 +1,7 @@
 # LangChain packages
 langchain-anthropic==0.3.18
 anthropic==0.58.2
-langchain-core==0.3.72
+langchain-core==0.3.74
 langchain-community==0.3.27
 langchain==0.3.27
 langchain-openai==0.3.28
